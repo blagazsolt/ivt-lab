@@ -59,7 +59,7 @@ public class TorpedoStore {
     return this.torpedoCount;
   }
 
-  public void doNothingButCollasion(){
+  public void doNothingButMoooreCollasion(){
     System.out.println("Hihi");
   }
 }
