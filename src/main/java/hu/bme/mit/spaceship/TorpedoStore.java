@@ -62,9 +62,10 @@ public class TorpedoStore {
     return this.torpedoCount;
   }
 
+
   public void doNothingButCollasion(){
     Logger logger = Logger.getLogger(Logger.GLOBAL_LOGGER_NAME);
     logger.log(Level.ALL,"Hihi");
+
   }
 }
-
