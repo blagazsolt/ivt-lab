@@ -1,6 +1,9 @@
 package hu.bme.mit.spaceship;
 
-import java.util.Random;
+import java.security.SecureRandom;
+import java.util.logging.Level;
+import java.util.logging.Logger;
+
 
 /**
 * Class storing and managing the torpedoes of a ship
@@ -30,18 +33,18 @@ public class TorpedoStore {
 
   public boolean fire(int numberOfTorpedos){
     if(numberOfTorpedos < 1 || numberOfTorpedos > this.torpedoCount){
-      new IllegalArgumentException("numberOfTorpedos");
+      throw new IllegalArgumentException("x must be nonnegative");
     }
 
     boolean success = false;
 
     // simulate random overheating of the launcher bay which prevents firing
-    Random generator = new Random();
+    SecureRandom generator = new SecureRandom();
     double r = generator.nextDouble();
 
     if (r >= FAILURE_RATE) {
       // successful firing
-      this.torpedoCount =- numberOfTorpedos;
+      this.torpedoCount -= numberOfTorpedos;
       success = true;
     } else {
       // simulated failure
@@ -60,7 +63,8 @@ public class TorpedoStore {
   }
 
   public void doNothingButCollasion(){
-    System.out.println("Hihi");
+    Logger logger = Logger.getLogger(Logger.GLOBAL_LOGGER_NAME);
+    logger.log(Level.ALL,"Hihi");
   }
 }
 
